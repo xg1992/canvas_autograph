@@ -1,11 +1,8 @@
 <view class="content">
   <canvas id="canvas" canvas-id="canvas" bindtouchstart="start" bindtouchmove="move" bindtouchend="end"></canvas>
-  <!-- <view class="flex">
-    <button bindtap="clearCanvas" size="mini">重新签名</button>
-    <button bindtap="confirm" size="mini" style="margin-left: 15px;">确认签名</button>
-  </view> -->
   <view class="btn-group">
     <text class="btn-text" bindtap="clearCanvas" >重新签名</text>
     <text class="btn-text" bindtap="confirm" >确认签名</text>
   </view>
 </view>
+<image src="{{imgsrc}}" mode="aspectFit"></image>

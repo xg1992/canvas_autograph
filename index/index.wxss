@@ -1,4 +1,4 @@
-page{
+/* index2/index.wxss */page{
   height: 100%;
   overflow: hidden;
 }
@@ -8,25 +8,12 @@ page{
   height: 100%;
 }
 #canvas {
-  width: calc(100% - 50px);
-  height: 100%;
+  width: 100%;
+  height: calc(100% - 50px);
   background-color: #f5f6fa;
 }
-.flex {
-  position: absolute;
-  top: 40%;
-  right: -50%;
-  width: 100%;
-  text-align: center;
-  padding: 15px;
-}
 .btn-group {
-  position: absolute;
-  top: 0;
-  right: 40px;
-  width: 100vh;
-  transform: rotate(-90deg);
-  transform-origin: 100% 0;
+  width: 100%;
   text-align: center;
 }
 .btn-text {

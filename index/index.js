@@ -11,8 +11,6 @@ Page({
 
   },
   onLoad: function () {
-    console.log('代码片段是一种迷你、可分享的小程序或小游戏项目，可用于分享小程序和小游戏的开发经验、展示组件和 API 的使用、复现开发问题和 Bug 等。可点击以下链接查看代码片段的详细文档：')
-    console.log('https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html')
     ctx = wx.createCanvasContext('canvas') //创建画布对象
     console.log(ctx)
     const canvas = wx.createSelectorQuery();
@@ -87,12 +85,12 @@ Page({
         if(res.confirm){
 
           wx.canvasToTempFilePath({
-            x: 0,
-            y: 0,
-            width: canvasw,
-            height: canvash,
-            destWidth: 320,
-            destHeight: canvash * 320 / canvasw,
+            x: 0,  // 导出图片起点的x坐标
+            y: 0,  // 导出图片起点的y坐标
+            width: canvasw,  // 需要导出图片在画布的宽度
+            height: canvash,  // 需要导出图片在画布的高度
+            destWidth: 320,  // 导出后图片实际宽度
+            destHeight: canvash * 320 / canvasw,  // 导出后图片实际高度
             canvasId: 'canvas',
             success:(res)=> {
               console.log(res.tempFilePath)
