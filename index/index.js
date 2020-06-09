@@ -4,7 +4,7 @@ let isStart = false; //画笔重新开始
 let x = ''; //路径点的x坐标
 let y = ''; //路径点的y坐标
 
-//画布宽高
+//画布宽高，用于清空画布和导出图片
 let canvasw, canvash;
 Page({
   data: {
@@ -18,8 +18,6 @@ Page({
     canvas.select('#canvas').boundingClientRect(function(rect){
       canvasw = rect.width;
       canvash = rect.height;
-      // ctx.drawImage('./bg.png', 0, 0, rect.width, rect.height)
-      // ctx.draw()
       _this.setbg()
     }).exec()
     
@@ -58,13 +56,13 @@ Page({
   move(e){
     if(isStart){
       ctx.beginPath();
-      ctx.moveTo(x,y)
-      ctx.lineTo(e.touches[0].x,e.touches[0].y)
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = 'red';
-      ctx.stroke();
-      ctx.draw(true)
-      x = e.touches[0].x;
+      ctx.moveTo(x,y) // 移动笔触，从该点开始画线
+      ctx.lineTo(e.touches[0].x,e.touches[0].y) // 线条的终点
+      ctx.lineWidth = 3; // 线条宽度
+      ctx.strokeStyle = 'red';  // 线条颜色
+      ctx.stroke(); // 画出当前设置的线条
+      ctx.draw(true) // 把线条渲染到canvas
+      x = e.touches[0].x; // 每次移动需要重新把终点设为起点
       y = e.touches[0].y;
     }
   },
@@ -91,7 +89,7 @@ Page({
             height: canvash,  // 需要导出图片在画布的高度
             destWidth: 320,  // 导出后图片实际宽度
             destHeight: canvash * 320 / canvasw,  // 导出后图片实际高度
-            canvasId: 'canvas',
+            canvasId: 'canvas', // 需要导出图片的canvas的id
             success:(res)=> {
               console.log(res.tempFilePath)
               this.setData({
